@@ -1,0 +1,51 @@
+deepspeed --include localhost:0,1,2,3,4,5,6,7 --master_port 29473 src/training/training_augment_distill_with_alpha_with_b_highres.py \
+    --lora_enable True \
+    --lora_namespan_exclude "['model.embed_tokens', 'lm_head']" \
+    --lora_rank 8 \
+    --lora_alpha 16 \
+    --lora_dropout 0.0 \
+    --num_lora_modules -1 \
+    --deepspeed scripts/zero2.json \
+    --model_id $MODEL_NAME \
+    --data_path "/data7/Users/zxr/hyh/SimpAgent-main/data/mind2web_train_llavaformat.json" \
+    --image_folder "" \
+    --freeze_vision_tower True \
+    --freeze_llm False \
+    --tune_merger False \
+    --bf16 True \
+    --fp16 False \
+    --disable_flash_attn2 False \
+    --output_dir "/home/noah/lvyibo/Training/augment/mindweb_5epoch_5e-4_r8_cosine_2AI_highres_lora_distill_mask513_alpha1_drop_3_b1_1_b2_1" \
+    --num_train_epochs 5 \
+    --per_device_train_batch_size 2 \
+    --gradient_accumulation_steps 1 \
+    --min_pixels $((256 * 28 * 28)) \
+    --max_pixels $((1280 * 28 * 28)) \
+    --learning_rate 5e-4 \
+    --merger_lr 0.0 \
+    --vision_lr 0.0 \
+    --weight_decay 0. \
+    --warmup_ratio 0.01 \
+    --lr_scheduler_type "cosine" \
+    --logging_steps 10 \
+    --tf32 True \
+    --gradient_checkpointing True \
+    --report_to tensorboard \
+    --lazy_preprocess True \
+    --save_strategy "steps" \
+    --save_steps 483  \
+    --save_total_limit 11 \
+    --seed 42 \
+    --save_only_model True \
+    --dataloader_num_workers 12 \
+    --alpha 1 \
+    --b1 1 \
+    --b2 1 \
+    --drop_k 3 \
+    --augment True \
+    --mask_prob 0.5 \
+    --window_min 0.1 \
+    --window_max 0.3 \
+    --change True \
+    --combination False \
+    --random_mask True    

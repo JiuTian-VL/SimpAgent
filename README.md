@@ -38,9 +38,20 @@ pip install -r requirement.txt
 ```
 Due to a bug in Transformers v4.45.2, please replace the transformers-qwen2vl model file with SimpAgent/src/model_file/modeling_qwen2vl.py to ensure the correctness of the rope_encoding implementation.
 
+## Download datasets
+You need to download and prepare the AITW, Mind2Web, AndroidControl, and Odyssey datasets on your own, and then replace the image paths in the dataset JSON files we provide accordingly.
+
+- AITW & Mind2Web: https://github.com/njucckevin/SeeClick/blob/main/agent_tasks/readme_agent.md
+
+- AndroidControl: https://github.com/google-research/google-research/tree/master/android_control
+
+- Odyssey: https://huggingface.co/datasets/OpenGVLab/GUI-Odyssey
+
+- SimpAgent training files: https://huggingface.co/datasets/Minuskid/SimpAgent-data
+
 ## How to run
 ```shell
-bash scripts/finetune_lora.sh
+bash scripts/finetune_aitw.sh
 ```
 
 ## :balloon: SimpAgent Framework
