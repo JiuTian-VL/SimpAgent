@@ -1,6 +1,5 @@
 import json
 import re
-from src.utils import text_matching
 import math
 
 data = json.load(open('/data7/Users/zxr/hyh/SimpAgent-main/odssey_eval/guiodssey_bs64_lr3e-5_mask535_drop6_alpha1_eval/odssey_results.json', 'r'))
